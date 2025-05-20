@@ -12,9 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as UserAddUserImport } from './routes/user/add-user'
+import { Route as UsersAddUserImport } from './routes/users/add-user'
+import { Route as UsersIdImport } from './routes/users/$id'
 import { Route as TableUserTableImport } from './routes/table/user-table'
-import { Route as ProfileIdImport } from './routes/profile/$id'
 import { Route as LoginLoginUserImport } from './routes/login/login-user'
 
 // Create/Update Routes
@@ -25,21 +25,21 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const UserAddUserRoute = UserAddUserImport.update({
-  id: '/user/add-user',
-  path: '/user/add-user',
+const UsersAddUserRoute = UsersAddUserImport.update({
+  id: '/users/add-user',
+  path: '/users/add-user',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UsersIdRoute = UsersIdImport.update({
+  id: '/users/$id',
+  path: '/users/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
 const TableUserTableRoute = TableUserTableImport.update({
   id: '/table/user-table',
   path: '/table/user-table',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProfileIdRoute = ProfileIdImport.update({
-  id: '/profile/$id',
-  path: '/profile/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,13 +67,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginLoginUserImport
       parentRoute: typeof rootRoute
     }
-    '/profile/$id': {
-      id: '/profile/$id'
-      path: '/profile/$id'
-      fullPath: '/profile/$id'
-      preLoaderRoute: typeof ProfileIdImport
-      parentRoute: typeof rootRoute
-    }
     '/table/user-table': {
       id: '/table/user-table'
       path: '/table/user-table'
@@ -81,11 +74,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TableUserTableImport
       parentRoute: typeof rootRoute
     }
-    '/user/add-user': {
-      id: '/user/add-user'
-      path: '/user/add-user'
-      fullPath: '/user/add-user'
-      preLoaderRoute: typeof UserAddUserImport
+    '/users/$id': {
+      id: '/users/$id'
+      path: '/users/$id'
+      fullPath: '/users/$id'
+      preLoaderRoute: typeof UsersIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/users/add-user': {
+      id: '/users/add-user'
+      path: '/users/add-user'
+      fullPath: '/users/add-user'
+      preLoaderRoute: typeof UsersAddUserImport
       parentRoute: typeof rootRoute
     }
   }
@@ -96,26 +96,26 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login/login-user': typeof LoginLoginUserRoute
-  '/profile/$id': typeof ProfileIdRoute
   '/table/user-table': typeof TableUserTableRoute
-  '/user/add-user': typeof UserAddUserRoute
+  '/users/$id': typeof UsersIdRoute
+  '/users/add-user': typeof UsersAddUserRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login/login-user': typeof LoginLoginUserRoute
-  '/profile/$id': typeof ProfileIdRoute
   '/table/user-table': typeof TableUserTableRoute
-  '/user/add-user': typeof UserAddUserRoute
+  '/users/$id': typeof UsersIdRoute
+  '/users/add-user': typeof UsersAddUserRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/login/login-user': typeof LoginLoginUserRoute
-  '/profile/$id': typeof ProfileIdRoute
   '/table/user-table': typeof TableUserTableRoute
-  '/user/add-user': typeof UserAddUserRoute
+  '/users/$id': typeof UsersIdRoute
+  '/users/add-user': typeof UsersAddUserRoute
 }
 
 export interface FileRouteTypes {
@@ -123,40 +123,40 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login/login-user'
-    | '/profile/$id'
     | '/table/user-table'
-    | '/user/add-user'
+    | '/users/$id'
+    | '/users/add-user'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login/login-user'
-    | '/profile/$id'
     | '/table/user-table'
-    | '/user/add-user'
+    | '/users/$id'
+    | '/users/add-user'
   id:
     | '__root__'
     | '/'
     | '/login/login-user'
-    | '/profile/$id'
     | '/table/user-table'
-    | '/user/add-user'
+    | '/users/$id'
+    | '/users/add-user'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginLoginUserRoute: typeof LoginLoginUserRoute
-  ProfileIdRoute: typeof ProfileIdRoute
   TableUserTableRoute: typeof TableUserTableRoute
-  UserAddUserRoute: typeof UserAddUserRoute
+  UsersIdRoute: typeof UsersIdRoute
+  UsersAddUserRoute: typeof UsersAddUserRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginLoginUserRoute: LoginLoginUserRoute,
-  ProfileIdRoute: ProfileIdRoute,
   TableUserTableRoute: TableUserTableRoute,
-  UserAddUserRoute: UserAddUserRoute,
+  UsersIdRoute: UsersIdRoute,
+  UsersAddUserRoute: UsersAddUserRoute,
 }
 
 export const routeTree = rootRoute
@@ -171,9 +171,9 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/login/login-user",
-        "/profile/$id",
         "/table/user-table",
-        "/user/add-user"
+        "/users/$id",
+        "/users/add-user"
       ]
     },
     "/": {
@@ -182,14 +182,14 @@ export const routeTree = rootRoute
     "/login/login-user": {
       "filePath": "login/login-user.tsx"
     },
-    "/profile/$id": {
-      "filePath": "profile/$id.tsx"
-    },
     "/table/user-table": {
       "filePath": "table/user-table.tsx"
     },
-    "/user/add-user": {
-      "filePath": "user/add-user.tsx"
+    "/users/$id": {
+      "filePath": "users/$id.tsx"
+    },
+    "/users/add-user": {
+      "filePath": "users/add-user.tsx"
     }
   }
 }

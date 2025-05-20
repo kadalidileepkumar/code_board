@@ -5,7 +5,7 @@ import { useParams } from '@tanstack/react-router'
 import { ViewProfile } from '../an/ViewProfile'
 
 export function SingleProfile() {
-  const { id } = useParams({ from :'/profile/$id' })
+ const { id } = useParams({ from: '/users/$id' });
 
   const { isLoading, data, error } = useQuery({
     queryKey: ['user', id],
