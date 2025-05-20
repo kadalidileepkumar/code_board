@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as UsersAddUserImport } from './routes/users/add-user'
 import { Route as TableUserListImport } from './routes/table/user-list'
 import { Route as ProfileIdImport } from './routes/profile/$id'
 import { Route as CommitGetCommitImport } from './routes/commit/get-commit'
@@ -23,6 +24,12 @@ import { Route as CommitAddCommitsImport } from './routes/commit/add-commits'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UsersAddUserRoute = UsersAddUserImport.update({
+  id: '/users/add-user',
+  path: '/users/add-user',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -102,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TableUserListImport
       parentRoute: typeof rootRoute
     }
+    '/users/add-user': {
+      id: '/users/add-user'
+      path: '/users/add-user'
+      fullPath: '/users/add-user'
+      preLoaderRoute: typeof UsersAddUserImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -114,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/commit/get-commit': typeof CommitGetCommitRoute
   '/profile/$id': typeof ProfileIdRoute
   '/table/user-list': typeof TableUserListRoute
+  '/users/add-user': typeof UsersAddUserRoute
 }
 
 export interface FileRoutesByTo {
@@ -123,6 +138,7 @@ export interface FileRoutesByTo {
   '/commit/get-commit': typeof CommitGetCommitRoute
   '/profile/$id': typeof ProfileIdRoute
   '/table/user-list': typeof TableUserListRoute
+  '/users/add-user': typeof UsersAddUserRoute
 }
 
 export interface FileRoutesById {
@@ -133,6 +149,7 @@ export interface FileRoutesById {
   '/commit/get-commit': typeof CommitGetCommitRoute
   '/profile/$id': typeof ProfileIdRoute
   '/table/user-list': typeof TableUserListRoute
+  '/users/add-user': typeof UsersAddUserRoute
 }
 
 export interface FileRouteTypes {
@@ -144,6 +161,7 @@ export interface FileRouteTypes {
     | '/commit/get-commit'
     | '/profile/$id'
     | '/table/user-list'
+    | '/users/add-user'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -152,6 +170,7 @@ export interface FileRouteTypes {
     | '/commit/get-commit'
     | '/profile/$id'
     | '/table/user-list'
+    | '/users/add-user'
   id:
     | '__root__'
     | '/'
@@ -160,6 +179,7 @@ export interface FileRouteTypes {
     | '/commit/get-commit'
     | '/profile/$id'
     | '/table/user-list'
+    | '/users/add-user'
   fileRoutesById: FileRoutesById
 }
 
@@ -170,6 +190,7 @@ export interface RootRouteChildren {
   CommitGetCommitRoute: typeof CommitGetCommitRoute
   ProfileIdRoute: typeof ProfileIdRoute
   TableUserListRoute: typeof TableUserListRoute
+  UsersAddUserRoute: typeof UsersAddUserRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -179,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommitGetCommitRoute: CommitGetCommitRoute,
   ProfileIdRoute: ProfileIdRoute,
   TableUserListRoute: TableUserListRoute,
+  UsersAddUserRoute: UsersAddUserRoute,
 }
 
 export const routeTree = rootRoute
@@ -196,7 +218,8 @@ export const routeTree = rootRoute
         "/commit/add-temp",
         "/commit/get-commit",
         "/profile/$id",
-        "/table/user-list"
+        "/table/user-list",
+        "/users/add-user"
       ]
     },
     "/": {
@@ -216,6 +239,9 @@ export const routeTree = rootRoute
     },
     "/table/user-list": {
       "filePath": "table/user-list.tsx"
+    },
+    "/users/add-user": {
+      "filePath": "users/add-user.tsx"
     }
   }
 }

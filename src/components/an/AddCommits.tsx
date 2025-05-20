@@ -1,6 +1,6 @@
 import * as React from "react";
 import { format, isValid } from "date-fns";
-import parse from "date-fns/parse";
+import { parse } from "date-fns/parse";
 import {
   Card,
   CardContent,

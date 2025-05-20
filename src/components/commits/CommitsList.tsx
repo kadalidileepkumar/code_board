@@ -126,15 +126,19 @@ const { data, isError } = useQuery<CommitsApiResponse>({
   enabled: search.page_no != null && search.page_size != null,
 });
 
-console.log(data,"data for check")
+
 
 
 if (isError || !data?.data?.data || !Array.isArray(data.data.data)) {
   return <div>Error fetching commits or no data available.</div>;
 }
 
+
+
 const commits = data.data.data.map(commit => ({
+  
   ...commit,
+  
   created_at_time: commit.created_at,
 }));
 

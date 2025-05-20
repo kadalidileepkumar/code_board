@@ -15,16 +15,23 @@ export type UserProfile = {
 };
 
 
-
 export interface Commit {
-  id: number;
-  project: string;
-  linesOfCode: number;
-  commitName: string;
-  date: string;
-  commitLinks: string;
-  name: string;
+  status: number;
+  success: boolean;
+  message: string;
+  data: {
+    total_records: string;
+    page: number;
+    created_at:Date;
+    current_page:number;
+    page_size: number;
+    totalPages: number;
+    next_page: number | null;
+    prev_page: number | null;
+    data: Commit[];
+  };
 }
+
 
 
 

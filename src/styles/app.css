@@ -176,6 +176,45 @@
   --an-profile-active-text-size: 0.875rem;
 }
 
+@theme adduser {
+  --an-card-font: "Urbanist";
+  --an-color-text-cardtitlec: #000;
+  --an-text-cardtitle-font-sizec: 1.5rem;
+  --an-text-cardtitle-font-weightc: 400;
+  --an-text-cardtitle-line-heightc: 1.5rem;
+  --an-text-cardD-font-size: 1.125rem;
+  --an-text-cardD-line-height: 1.125rem;
+  --an-color-text-firstN: #383838;
+  --an-text-firstN-font-size: 1rem;
+  --an-text-firstN-font-weight: 500;
+  --an-text-firstN-line-height: 1rem;
+  --an-color-text-cardfooter: #0e0e0e;
+  --an-color-text-Adduser: #fff;
+  --an-text-color-hover: #800000;
+  --an-text-doj-color: rgba(0, 0, 0, 0.3);
+  --an-text-color-v: #ff0000;
+  --an-text-fontsize-v: 0.75rem;
+}
+
+
+/*Commit user*/
+@theme CommitUser{
+  --an-CU-text-cardtitle-color:#000;
+  --an-CU-text-cardtite-fontsize:1.5rem;
+  --an-CU-text-cardtitle-weight:400;
+  --an-CU-text-cardtitle-height:1.5rem;
+  /*project*/
+  --an-CU-text-color:#383838;
+  --an-CU-text-fontsize:1rem;
+  --an-CU-text-weight:500;
+  --an-CU-text-height:1rem;
+    /*date and selet color*/
+  --an-text-doj-color: rgba(0, 0, 0, 0.3);
+
+
+
+}
+
 @theme table{
   --an-table-body-number-color: rgba(0, 0, 0, 0.80);
   --an-table-header-background: #F2F2F2;

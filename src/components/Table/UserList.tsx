@@ -7,7 +7,7 @@ import { ProfileTable } from "../an/ProfileTable";
 import { useNavigate, useSearch } from '@tanstack/react-router';
 import { UserProfile, UsersApiResponse, FullProfile } from "~/lib/interfaces/types";
 import { getUsersAPI } from "~/http/services/allprofiles";
-import { userListRoute } from "~/lib/validations/validate";
+
 
 
 export const columns: ColumnDef<UserProfile>[] = [
@@ -145,13 +145,13 @@ const search = useSearch({ strict: false }) as Record<string, string | undefined
     full_name: `${user.first_name} ${user.last_name}`,
     email: user.email,
     phone: user.phone,
-    // is_active: user.is_active,
+
     dob: user.dob,
     doj: user.doj,
     designation: user.designation,
     created_at: user.created_at,
     updated_at: user.updated_at,
-    // serial: user.serial
+    
   }));
 
   const paginationDetails = {

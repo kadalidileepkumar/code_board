@@ -20,7 +20,7 @@ function Home() {
 nav({to:"/", search:{one:1,two:2}})
           }}>
             
-          pushpa
+          Actanos
           
         </Button>
       </div>
