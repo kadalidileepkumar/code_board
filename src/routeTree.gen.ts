@@ -12,10 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProfileIdImport } from './routes/profile/$id'
 import { Route as UserAddUserImport } from './routes/user/add-user'
 import { Route as TableUserTableImport } from './routes/table/user-table'
-import { Route as ProfileViewProfileImport } from './routes/profile/view-profile'
+import { Route as ProfileIdImport } from './routes/profile/$id'
 import { Route as LoginLoginUserImport } from './routes/login/login-user'
 
 // Create/Update Routes
@@ -38,11 +37,6 @@ const TableUserTableRoute = TableUserTableImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProfileViewProfileRoute = ProfileViewProfileImport.update({
-  id: '/profile/view-profile',
-  path: '/profile/view-profile',
-  getParentRoute: () => rootRoute,
-} as any)
 const ProfileIdRoute = ProfileIdImport.update({
   id: '/profile/$id',
   path: '/profile/$id',
@@ -64,6 +58,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/login/login-user': {
+      id: '/login/login-user'
+      path: '/login/login-user'
+      fullPath: '/login/login-user'
+      preLoaderRoute: typeof LoginLoginUserImport
       parentRoute: typeof rootRoute
     }
     '/profile/$id': {
@@ -94,22 +95,16 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/profile/view-profile': typeof ProfileViewProfileRoute
-  '/table/user-table': typeof TableUserTableRoute
-  '/profile/$id': typeof ProfileIdRoute
   '/login/login-user': typeof LoginLoginUserRoute
-  '/profile/view-profile': typeof ProfileViewProfileRoute
+  '/profile/$id': typeof ProfileIdRoute
   '/table/user-table': typeof TableUserTableRoute
   '/user/add-user': typeof UserAddUserRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/profile/view-profile': typeof ProfileViewProfileRoute
-  '/table/user-table': typeof TableUserTableRoute
-  '/profile/$id': typeof ProfileIdRoute
   '/login/login-user': typeof LoginLoginUserRoute
-  '/profile/view-profile': typeof ProfileViewProfileRoute
+  '/profile/$id': typeof ProfileIdRoute
   '/table/user-table': typeof TableUserTableRoute
   '/user/add-user': typeof UserAddUserRoute
 }
@@ -117,43 +112,32 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/profile/view-profile': typeof ProfileViewProfileRoute
-  '/table/user-table': typeof TableUserTableRoute
-  '/profile/$id': typeof ProfileIdRoute
   '/login/login-user': typeof LoginLoginUserRoute
-  '/profile/view-profile': typeof ProfileViewProfileRoute
+  '/profile/$id': typeof ProfileIdRoute
   '/table/user-table': typeof TableUserTableRoute
   '/user/add-user': typeof UserAddUserRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/profile/view-profile' | '/table/user-table'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/profile/view-profile' | '/table/user-table'
-  id: '__root__' | '/' | '/profile/view-profile' | '/table/user-table'
-  fullPaths: '/' | '/profile/$id'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/profile/$id'
-  id: '__root__' | '/' | '/profile/$id'
   fullPaths:
     | '/'
     | '/login/login-user'
-    | '/profile/view-profile'
+    | '/profile/$id'
     | '/table/user-table'
     | '/user/add-user'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login/login-user'
-    | '/profile/view-profile'
+    | '/profile/$id'
     | '/table/user-table'
     | '/user/add-user'
   id:
     | '__root__'
     | '/'
     | '/login/login-user'
-    | '/profile/view-profile'
+    | '/profile/$id'
     | '/table/user-table'
     | '/user/add-user'
   fileRoutesById: FileRoutesById
@@ -161,21 +145,16 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProfileViewProfileRoute: typeof ProfileViewProfileRoute
-  TableUserTableRoute: typeof TableUserTableRoute
   LoginLoginUserRoute: typeof LoginLoginUserRoute
-  ProfileViewProfileRoute: typeof ProfileViewProfileRoute
+  ProfileIdRoute: typeof ProfileIdRoute
   TableUserTableRoute: typeof TableUserTableRoute
   UserAddUserRoute: typeof UserAddUserRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProfileViewProfileRoute: ProfileViewProfileRoute,
-  TableUserTableRoute: TableUserTableRoute,
-  ProfileIdRoute: ProfileIdRoute,
   LoginLoginUserRoute: LoginLoginUserRoute,
-  ProfileViewProfileRoute: ProfileViewProfileRoute,
+  ProfileIdRoute: ProfileIdRoute,
   TableUserTableRoute: TableUserTableRoute,
   UserAddUserRoute: UserAddUserRoute,
 }
@@ -191,46 +170,26 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "/profile/view-profile",
-        "/table/user-table"
-=======
-        "/profile/$id"
->>>>>>> sat/codeboard
-=======
         "/login/login-user",
-        "/profile/view-profile",
+        "/profile/$id",
         "/table/user-table",
         "/user/add-user"
->>>>>>> features/login
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     "/login/login-user": {
       "filePath": "login/login-user.tsx"
     },
->>>>>>> features/login
-    "/profile/view-profile": {
-      "filePath": "profile/view-profile.tsx"
+    "/profile/$id": {
+      "filePath": "profile/$id.tsx"
     },
     "/table/user-table": {
       "filePath": "table/user-table.tsx"
-<<<<<<< HEAD
-=======
-    "/profile/$id": {
-      "filePath": "profile/$id.tsx"
->>>>>>> sat/codeboard
-=======
     },
     "/user/add-user": {
       "filePath": "user/add-user.tsx"
->>>>>>> features/login
     }
   }
 }

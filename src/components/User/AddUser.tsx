@@ -1,173 +1,110 @@
 import * as React from "react";
-
 import { format } from "date-fns";
-import { Calendar } from "../ui/calendar";
-import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover";
-import { Button } from "../ui/button";
-import { CalendarIcon } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { Label } from "../ui/label";
-export function CardWithAddUser() {
-  const [dob, setDob] = React.useState<Date>();
-  const [doj, setDoj] = React.useState<Date>();
-  return (
-    <Card className="w-[900px] mx-10 my-10 shadow-md  bg-(--an-color-text-Adduser) ">
-      <CardHeader>
-        <CardTitle className="flex">
-          <div className="font-[urbanist] text-(--an-color-text-cardtitlec) text-(length:--an-text-cardtitle-font-sizec) leading-(--an-text-cardtitle-line-heightc) font-(--an-text-cardtitle-font-weightc) ">
-          Add User
-          </div>
-        </CardTitle>
-        <CardDescription className="capitalize mt-8 ">
-          <div className="font-[urbanist] text-(--an-color-text-cardtitlec) text-(length:--an-text-cardD-font-size) leading-(--an-text-cardD-line-height) font-(--an-text-cardtitle-font-weightc) ">
-            Personal Details
-          </div>
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-            <div>
-              <Label htmlFor="firstName">
-                <div className=" capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight) ">
-                  First Name
-                </div>
-              </Label>
-              <input
-                id="firstName"
-                className="w-full h-7 px-2 border-b border-black/10 focus:outline-none"
-              />
-            </div>
-            <div>
-              <Label htmlFor="lastName">
-                <div className=" capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-                  Last Name
-                </div>
-              </Label>
-              <input
-                id="lastName"
-                className="w-full h-7 px-2 border-b border-black/10 focus:outline-none"
-              />
-            </div>
-            <div>
-              <Label htmlFor="email">
-                <div className=" capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-                  Email Address
-                </div>
-              </Label>
-              <input
-                id="email"
-                type="email"
-                className="w-full h-7 px-2 border-b border-black/10 focus:outline-none"
-              />
-            </div>
-            <div>
-              <Label htmlFor="mobile">
-                <div className=" capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-                  Mobile Number
-                </div>
-              </Label>
-              <input
-                id="mobile"
-                className="w-full h-7 px-2 border-b border-black/10 focus:outline-none"
-              />
-            </div>
-            <div>
-              <Label htmlFor="dob" className="capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-                  DOB
-              </Label>
-              <div className="relative w-full">
-                <input
-                  readOnly
-                  value={dob ? format(dob, "PPP") : ""}
-                  placeholder="mm/dd/yyyy"
-                  className="w-full h-9 px-3 pr-10 border-b border-black/10 focus:outline-none font-[ urbanist] text-(--an-text-doj-color) text-(length:--an-text-firstN-font-size) font-(--an-text-cardtitle-font-weightc) leading-(--an-text-firstN-line-height)"
-                />
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <button
-                      type="button"
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500"
-                    >
-                      <CalendarIcon className="h-4 w-4" />
-                    </button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="end">
-                    <Calendar
-                      mode="single"
-                      selected={dob}
-                      onSelect={setDob}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-            </div>
-            <div>
-              <Label htmlFor="doj" className=" capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-                  Date of Joining
-              </Label>
-              <div className="relative w-full">
-                <input
-                  readOnly
-                  value={doj ? format(doj, "PPP") : ""}
-                  placeholder="mm/dd/yyyy"
-                  className="w-full h-9 px-3 pr-10 border-b border-black/10 focus:outline-none font-[urbanist] text-(--an-text-doj-color) text-(length:--an-text-firstN-font-size) font-(--an-text-cardtitle-font-weightc) leading-(--an-text-firstN-line-height)"
-                />
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <button
-                      type="button"
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500"
-                    >
-                      <CalendarIcon className="h-4 w-4" />
-                    </button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="end">
-                    <Calendar
-                      mode="single"
-                      selected={doj}
-                      onSelect={setDoj}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-            </div>
+import { CardWithAddUser, AddUserFormValues } from "../an/CardWithAddUser";
+import { useCreateUserMutation } from "~/http/services/adduser";
+import { toast } from "react-hot-toast";
 
-            <div className="col-span-2">
-              <Label htmlFor="designation">
-                <div className=" capitalize font-[urbanist] text-(--an-color-text-firstN) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-                  Designation
-                </div>
-              </Label>
-              <input
-                id="designation"
-                className="w-full h-7 px-2 border-b border-black/10 focus:outline-none"
-              />
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-end gap-4">
-        <Button variant="outline">
-          <div className=" capitalize font-[urbanist] text-(--an-color-text-cardfooter) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-            Cancel
-          </div>
-        </Button>
-        <Button className="bg-red-600 text-white hover:bg-red-700">
-          <div className=" capitalize font-[urbanist] text-(--an-color-text-Adduser) text-(length:--an-text-firstN-font-size) leading-(--an-text-firstN-line-height) font-(--an-text-firstN-font-weight)">
-            Add User
-          </div>
-        </Button>
-      </CardFooter>
-    </Card>
+const initialForm: AddUserFormValues = {
+  firstname: "",
+  lastname: "",
+  email: "",
+  mobile: "",
+  designation: "",
+  dateofbirth: "",
+  dateofjoninig: "",
+  dob: undefined,
+  doj: undefined,
+};
+
+export default function AddUser() {
+  const [values, setValues] = React.useState<AddUserFormValues>(initialForm);
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const [submitted, setSubmitted] = React.useState(false);
+
+  const mutation = useCreateUserMutation();
+
+  const formatDate = (date?: Date) => (date ? format(date, "dd/MM/yyyy") : "");
+
+  const handleChange = <K extends keyof AddUserFormValues>(
+    field: K,
+    value: AddUserFormValues[K]
+  ) => {
+    setValues((prev) => {
+      let newVal = value;
+      if (field === "mobile" && typeof value === "string") {
+        newVal = value.replace(/[^\d]/g, "").slice(0, 10) as AddUserFormValues[K];
+      }
+      return { ...prev, [field]: newVal };
+    });
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field as string];
+      return newErrors;
+    });
+  };
+
+  const handleCancel = () => {
+    setValues(initialForm);
+    setErrors({});
+    setSubmitted(false);
+  };
+  const validate = (vals: AddUserFormValues) => {
+    const errs: Record<string, string> = {};
+    if (!vals.firstname.trim()) errs.firstname = "First name is required";
+    if (!vals.lastname.trim()) errs.lastname = "Last name is required";
+    if (!vals.email.trim()) {
+      errs.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(vals.email)) {
+      errs.email = "Invalid email";
+    }
+    if (!vals.mobile.trim()) {
+      errs.mobile = "Mobile is required";
+    } else if (!/^\d{10}$/.test(vals.mobile)) {
+      errs.mobile = "Mobile must be 10 digits";
+    }
+    if (!vals.dob) errs.dateofbirth = "Date of birth is required";
+    if (!vals.doj) errs.dateofjoninig = "Date of joining is required";
+    if (!vals.designation.trim()) errs.designation = "Designation is required";
+    return errs;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    const validationErrors = validate(values);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      mutation.mutate(values, {
+        onSuccess: () => {
+          toast.success("User added successfully!");
+          setValues(initialForm);
+          setSubmitted(false);
+        },
+        onError: (error: any) => {
+          if (error?.fieldErrors) {
+            setErrors(prev => ({ ...prev, ...error.fieldErrors }));
+          } else {
+            toast.error(error.message || "Failed to add user");
+          }
+        },
+      });
+    }
+  };
+
+  return (
+    <CardWithAddUser
+      values={{
+        ...values,
+        dateofbirth: formatDate(values.dob),
+        dateofjoninig: formatDate(values.doj),
+      }}
+      onChange={handleChange}
+      onCancel={handleCancel}
+      onSubmit={handleSubmit}
+      errors={errors}
+      submitted={submitted}
+      loading={mutation.isPending}
+    />
   );
 }
